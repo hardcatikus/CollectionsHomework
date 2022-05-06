@@ -1,0 +1,11 @@
+# Ignore objects and archives
+.idea/
+
+.target/
+
+.out/
+
+# File-based project format
+*.iml
+# Project exclude paths
+/out/
