@@ -87,22 +87,25 @@ public class MainClass {
         java.util.LinkedList<MyPoint> linkedList = new LinkedList<>();
 
         int i=0;
-        while(i!=10){
+        while(i!=90){
             myLInkedList2.add(new MyPoint(i,i));
-            linkedList.add(new MyPoint(9-i,9-i));
+            linkedList.add(new MyPoint(i,i));
             i++;
         }
 
         System.out.println(myLInkedList2);
         System.out.println(linkedList);
 
+        int pointIndex = 55;
+        MyPoint point = new MyPoint(99,99);
+
         long start = System.nanoTime();
-        myLInkedList2.add(7,new MyPoint());
+        myLInkedList2.add(point);
         long finish = System.nanoTime();
         long timeElapsed1 = finish - start;
 
         start = System.nanoTime();
-        linkedList.add(7,new MyPoint());
+        linkedList.add(point);
         finish = System.nanoTime();
         long timeElapsed2 = finish - start;
 
@@ -111,26 +114,12 @@ public class MainClass {
                 " \n LinkedList - " + timeElapsed2);
 
         start = System.nanoTime();
-        myLInkedList2.remove(7);
+        MyPoint point01 = myLInkedList2.get(pointIndex);
         finish = System.nanoTime();
         timeElapsed1 = finish - start;
 
         start = System.nanoTime();
-        linkedList.remove(7);
-        finish = System.nanoTime();
-        timeElapsed2 = finish - start;
-
-        System.out.println("Время осуществления удаления элемента:" +
-                " \n MyLinkedList - " + timeElapsed1 +
-                " \n LinkedList - " + timeElapsed2);
-
-        start = System.nanoTime();
-        MyPoint point01 = myLInkedList2.get(7);
-        finish = System.nanoTime();
-        timeElapsed1 = finish - start;
-
-        start = System.nanoTime();
-        MyPoint point02 = linkedList.get(7);
+        MyPoint point02 = linkedList.get(pointIndex);
         finish = System.nanoTime();
         timeElapsed2 = finish - start;
 
@@ -138,8 +127,22 @@ public class MainClass {
                 " \n MyLinkedList - " + timeElapsed1 +
                 " \n LinkedList - " + timeElapsed2);
 
+        start = System.nanoTime();
+        myLInkedList2.remove(pointIndex);
+        finish = System.nanoTime();
+        timeElapsed1 = finish - start;
+
+        start = System.nanoTime();
+        linkedList.remove(pointIndex);
+        finish = System.nanoTime();
+        timeElapsed2 = finish - start;
+
+        System.out.println("Время осуществления удаления элемента:" +
+                " \n MyLinkedList - " + timeElapsed1 +
+                " \n LinkedList - " + timeElapsed2);
+
         System.out.println("Вывод:" +
-                        "\nMyLinkedList выполняет операции удаления," +
+                        "\n MyLinkedList выполняет операции удаления," +
                         " поиска и добавления быстрее, чем LinkedList");
     }
 }

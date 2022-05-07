@@ -13,9 +13,6 @@ public class TestClass {
 
         compareMaps();
 
-        //В выводе необходимо указать в каких случаях удобно использовать
-        // ту или иную коллекцию (для каждого из пунктов a,b,c)
-
     }
 
     public static void compareLists(){
@@ -39,13 +36,6 @@ public class TestClass {
                 " \n ArrayList - " + timeElapsed1 +
                 " \n LinkedList - " + timeElapsed2);
 
-        timeElapsed1 = removeTest(arrayList,point);
-        timeElapsed2 = removeTest(linkedList,point);
-
-        System.out.println("Время осуществления удаления элемента:" +
-                " \n ArrayList - " + timeElapsed1 +
-                " \n LinkedList - " + timeElapsed2);
-
         timeElapsed1 = searchTest(arrayList,point);
         timeElapsed2 = searchTest(linkedList,point);
 
@@ -53,12 +43,23 @@ public class TestClass {
                 " \n ArrayList - " + timeElapsed1 +
                 " \n LinkedList - " + timeElapsed2);
 
-        System.out.println("Вывод:" );
+        timeElapsed1 = removeTest(arrayList,point);
+        timeElapsed2 = removeTest(linkedList,point);
+
+        System.out.println("Время осуществления удаления элемента:" +
+                " \n ArrayList - " + timeElapsed1 +
+                " \n LinkedList - " + timeElapsed2);
+
+        System.out.println("Вывод:" +
+                " \n ArrayList - лучше подходит в тех, случаях, " +
+                "когда нужно осуществлять поиск по индексу элемента" +
+                " \n LinkedList - лучше подходит в тех, случаях, " +
+                "когда нужно осуществлять частое добавление и удаление элементов внутри списка");
     }
 
     public static void fillCollection(Collection<MyPoint> collection){
         int i=0;
-        while(i!=10){
+        while(i!=90){
             collection.add(new MyPoint(i,i));
             i++;
         }
@@ -111,15 +112,6 @@ public class TestClass {
                 " \n LinkedHashSet - " + timeElapsed2 +
                 " \n TreeSet - " + timeElapsed3);
 
-        timeElapsed1 = removeTest(hashSet,point);
-        timeElapsed2 = removeTest(linkedHashSet,point);
-        timeElapsed3 = removeTest(treeSet,point);
-
-        System.out.println("Время осуществления удаления элемента:" +
-                " \n HashSet - " + timeElapsed1 +
-                " \n LinkedHashSet - " + timeElapsed2 +
-                " \n TreeSet - " + timeElapsed3);
-
         timeElapsed1 = searchTest(hashSet,point);
         timeElapsed2 = searchTest(linkedHashSet,point);
         timeElapsed3 = searchTest(treeSet,point);
@@ -129,8 +121,26 @@ public class TestClass {
                 " \n LinkedHashSet - " + timeElapsed2 +
                 " \n TreeSet - " + timeElapsed3);
 
-        System.out.println("Вывод:" );
+        timeElapsed1 = removeTest(hashSet,point);
+        timeElapsed2 = removeTest(linkedHashSet,point);
+        timeElapsed3 = removeTest(treeSet,point);
 
+        System.out.println("Время осуществления удаления элемента:" +
+                " \n HashSet - " + timeElapsed1 +
+                " \n LinkedHashSet - " + timeElapsed2 +
+                " \n TreeSet - " + timeElapsed3);
+
+        System.out.println("Вывод:" +
+                " \n HashSet - лучше подходит в тех, случаях, " +
+                "когда последовательность элементов не важна," +
+                " добавляет новый элемент быстрее, чем LinkedHashSet, " +
+                "удаляет элемент быстрее, чем TreeSet" +
+                " \n LinkedHashSet - лучше подходит в тех, случаях, " +
+                "когда нужно сохранить последовательность добавления элементов, " +
+                "быстрее других наборов осуществляет удаление и поиск элементов" +
+                " \n TreeSet - лучше подходит в тех, случаях, " +
+                "когда нужно получить отсортированный набор, " +
+                "быстрее других наборов осуществляет добавление новых элементов");
     }
 
     public static void compareMaps(){
@@ -159,7 +169,16 @@ public class TestClass {
                 " \n LinkedHashMap - " + timeElapsed2 +
                 " \n TreeMap - " + timeElapsed3);
 
-        int pointIndex = 99;
+        int pointIndex = 55;
+
+        timeElapsed1 = searchMapTest(hashMap,pointIndex);
+        timeElapsed2 = searchMapTest(linkedHashMap,pointIndex);
+        timeElapsed3 = searchMapTest(treeMap,pointIndex);
+
+        System.out.println("Время осуществления поиска элемента:" +
+                " \n HashMap - " + timeElapsed1 +
+                " \n LinkedHashMap - " + timeElapsed2 +
+                " \n TreeMap - " + timeElapsed3);
 
         timeElapsed1 = removeMapTest(hashMap,pointIndex);
         timeElapsed2 = removeMapTest(linkedHashMap,pointIndex);
@@ -170,18 +189,16 @@ public class TestClass {
                 " \n LinkedHashMap - " + timeElapsed2 +
                 " \n TreeMap - " + timeElapsed3);
 
-        pointIndex = 8;
-
-        timeElapsed1 = searchMapTest(hashMap,pointIndex);
-        timeElapsed2 = searchMapTest(linkedHashMap,pointIndex);
-       timeElapsed3 = searchMapTest(treeMap,pointIndex);
-
-        System.out.println("Время осуществления поиска элемента:" +
-                " \n HashMap - " + timeElapsed1 +
-                " \n LinkedHashMap - " + timeElapsed2 +
-                " \n TreeMap - " + timeElapsed3);
-
-        System.out.println("Вывод:" );
+        System.out.println("Вывод:" +
+                " \n HashMap - лучше подходит в тех, случаях, " +
+                "когда последовательность элементов не важна," +
+                " выполняет операции медленее других карт" +
+                " \n LinkedHashMap - лучше подходит в тех, случаях, " +
+                "когда нужно сохранить последовательность добавления элементов, " +
+                "быстрее других карт осуществляет удаление и поиск элементов" +
+                " \n TreeMap - лучше подходит в тех, случаях, " +
+                "когда нужно получить отсортированный набор, " +
+                "быстрее других карт осуществляет добавление новых элементов");
 
     }
 
