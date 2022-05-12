@@ -1,5 +1,6 @@
 package com.netcracker.task.first;
 
+import java.util.LinkedList;
 import java.util.NoSuchElementException;
 
 public class MyLInkedList<E> implements ILinkedList<E> {
@@ -86,6 +87,12 @@ public class MyLInkedList<E> implements ILinkedList<E> {
 
     @Override
     public void clear() {
+        for (Node<E> currentNode = firstNode; currentNode != null; ) {
+            Node<E> next = currentNode.nextNode;
+            currentNode.element = null;
+            currentNode.nextNode = null;
+            currentNode = next;
+        }
         firstNode = lastNode = null;
         sizeOfList = 0;
     }
